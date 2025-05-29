@@ -16,6 +16,20 @@ interface Tool {
   detailsUrl?: string; // For a dedicated page if needed
 }
 
+// Simple Fingerprint Icon as a placeholder
+const FingerprintIcon = (props: React.SVGProps<SVGSVGElement>) => (
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
+    <path d="M12 10a2 2 0 0 0-2 2c0 1.02.51 1.92.6 2.5C10.73 14.64 11 14.86 11 15.17V16a1 1 0 0 0 1 1h"/>
+    <path d="M12 10V8"/>
+    <path d="M12 6a2 2 0 0 1-2-2c0-1.02.51-1.92.6-2.5C10.73 1.36 11 1.14 11 .83V0"/>
+    <path d="M7.5 17.5A1.5 1.5 0 0 1 9 16V8a1 1 0 0 1 1-1h"/>
+    <path d="M15 16V7a1 1 0 0 0-1-1h- posibilidades-m"/>
+    <path d="M12 22a2 2 0 0 0 2-2 .5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5 2 2 0 0 0 2 2Z"/>
+    <path d="M17.61 18.09A5.42 5.42 0 0 1 19 15.56V13a1 1 0 0 0-1-1h-1"/>
+    <path d="M5 13a1 1 0 0 0-1 1v2.56A5.42 5.42 0 0 1 6.39 18.09"/>
+  </svg>
+);
+
 const tools: Tool[] = [
   {
     id: 'bfs-scanner-v1',
@@ -32,7 +46,7 @@ const tools: Tool[] = [
     description: 'A comprehensive toolkit for digital forensics, aiding in data acquisition, analysis, and reporting.',
     type: 'Closed-Source',
     category: 'Digital Forensics',
-    icon: FingerprintIcon, // Custom SVG or Lucide alternative
+    icon: FingerprintIcon, 
   },
   {
     id: 'os-vuln-mapper',
@@ -61,20 +75,6 @@ const tools: Tool[] = [
     url: 'https://github.com/bharatfirstshield/cipherchecker', // Placeholder
   },
 ];
-
-// Simple Fingerprint Icon as a placeholder
-const FingerprintIcon = (props: React.SVGProps<SVGSVGElement>) => (
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
-    <path d="M12 10a2 2 0 0 0-2 2c0 1.02.51 1.92.6 2.5C10.73 14.64 11 14.86 11 15.17V16a1 1 0 0 0 1 1h"/>
-    <path d="M12 10V8"/>
-    <path d="M12 6a2 2 0 0 1-2-2c0-1.02.51-1.92.6-2.5C10.73 1.36 11 1.14 11 .83V0"/>
-    <path d="M7.5 17.5A1.5 1.5 0 0 1 9 16V8a1 1 0 0 1 1-1h"/>
-    <path d="M15 16V7a1 1 0 0 0-1-1h- posibilidades-m"/>
-    <path d="M12 22a2 2 0 0 0 2-2 .5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5 2 2 0 0 0 2 2Z"/>
-    <path d="M17.61 18.09A5.42 5.42 0 0 1 19 15.56V13a1 1 0 0 0-1-1h-1"/>
-    <path d="M5 13a1 1 0 0 0-1 1v2.56A5.42 5.42 0 0 1 6.39 18.09"/>
-  </svg>
-);
 
 
 export default function ToolsPage() {
@@ -143,3 +143,4 @@ export default function ToolsPage() {
     </div>
   );
 }
+
