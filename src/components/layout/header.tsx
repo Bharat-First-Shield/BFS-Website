@@ -12,7 +12,6 @@ const navItems = [
   { href: '/', label: 'Home' },
   { href: '/about', label: 'About Us' },
   { href: '/tools', label: 'Tools Showcase' },
-  { href: '/sow-generator', label: 'SOW Generator' },
   { href: '/blog', label: 'Blog' },
   { href: '/contact', label: 'Contact Us' },
 ];

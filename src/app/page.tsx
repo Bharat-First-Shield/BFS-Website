@@ -2,7 +2,7 @@
 import ThreeScene from '@/components/three-scene';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, FileText, Users, Wrench } from 'lucide-react';
+import { ArrowRight, Users, Wrench } from 'lucide-react'; // Removed FileText
 import Link from 'next/link';
 
 export default function Home() {
@@ -29,7 +29,7 @@ export default function Home() {
         <ThreeScene />
       </section>
 
-      <section className="grid md:grid-cols-3 gap-8">
+      <section className="grid md:grid-cols-2 gap-8"> {/* Changed grid to md:grid-cols-2 */}
         <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
           <CardHeader>
             <Users className="h-10 w-10 text-primary mb-4" />
@@ -60,21 +60,7 @@ export default function Home() {
             </Button>
           </CardContent>
         </Card>
-        <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
-          <CardHeader>
-            <FileText className="h-10 w-10 text-primary mb-4" />
-            <CardTitle>SOW Generator</CardTitle>
-            <CardDescription>Draft your Statement of Work.</CardDescription>
-          </CardHeader>
-          <CardContent>
-            <p className="text-muted-foreground mb-4">
-              Quickly generate a draft Statement of Work based on your project requirements using our streamlined SOW tool.
-            </p>
-            <Button asChild variant="link" className="px-0">
-              <Link href="/sow-generator">Start SOW <ArrowRight className="ml-1 h-4 w-4" /></Link>
-            </Button>
-          </CardContent>
-        </Card>
+        {/* SOW Generator Card Removed */}
       </section>
     </div>
   );
