@@ -6,18 +6,21 @@ import Image from 'next/image';
 
 const services = [
   {
+    id: "vapt",
     icon: Target,
     title: "Vulnerability Assessment and Penetration Testing (VAPT)",
     description: "We identify and exploit vulnerabilities in your systems before malicious actors do. Our comprehensive VAPT services ensure your infrastructure, applications, and networks are robust against attacks. We provide detailed reports with actionable recommendations.",
     features: ["Network VAPT", "Web Application VAPT", "Mobile Application VAPT", "Cloud Security Assessment"]
   },
   {
+    id: "soc",
     icon: ShieldAlert,
     title: "Security Operations Center (SOC) as a Service",
     description: "Our 24/7 SOC services provide continuous monitoring, threat detection, and incident response. We leverage advanced SIEM technology and expert analysts to protect your organization from evolving cyber threats.",
     features: ["Real-time Threat Monitoring", "Incident Detection & Response", "Log Management & Analysis", "Threat Intelligence Integration"]
   },
   {
+    id: "dfir",
     icon: Fingerprint,
     title: "Digital Forensics and Incident Response (DFIR)",
     description: "In the event of a security breach, our DFIR team provides rapid response to contain the threat, investigate the incident, and recover affected systems. We help you understand the attack and strengthen your defenses.",
@@ -50,11 +53,11 @@ export default function AboutPage() {
 
       <Separator />
 
-      <section>
+      <section id="core-services">
         <h2 className="text-3xl font-semibold text-center mb-8">Our Core Services</h2>
         <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
           {services.map((service) => (
-            <Card key={service.title} className="flex flex-col shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
+            <Card key={service.title} id={service.id} className="flex flex-col shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
               <CardHeader>
                 <div className="flex items-center gap-4 mb-2">
                   <service.icon className="h-10 w-10 text-primary" />
