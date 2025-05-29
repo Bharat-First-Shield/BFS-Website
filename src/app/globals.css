@@ -3,9 +3,7 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  font-family: Arial, Helvetica, sans-serif;
-}
+/* Removed body font-family here, as it's handled by Next/Font and Tailwind config */
 
 @layer base {
   :root {
@@ -39,22 +37,22 @@ body {
   .dark {
     --background: 220 40% 5%; /* Deep space blue #05070D */
     --foreground: 0 0% 98%; /* Light text */
-    --card: 220 35% 10%; /* Very dark blue #0F111C */
+    --card: 220 38% 8%; /* Darker, more saturated blue #0A0D1A */
     --card-foreground: 0 0% 98%;
-    --popover: 220 35% 8%; /* Even darker blue for popovers #0C0E17 */
+    --popover: 220 40% 6%; /* Even darker, more saturated blue #060813 */
     --popover-foreground: 0 0% 98%;
     --primary: 35 90% 55%; /* Vibrant orange #f2991c */
     --primary-foreground: 0 0% 98%; /* White text on orange for better contrast */
-    --secondary: 220 30% 12%; /* Dark blue-grey #141721 */
+    --secondary: 220 35% 10%; /* Dark blue #0F111C, for secondary elements/hovers */
     --secondary-foreground: 0 0% 98%;
-    --muted: 220 30% 12%; /* Dark blue-grey #141721 */
+    --muted: 220 35% 10%; /* Sync with secondary */
     --muted-foreground: 0 0% 63.9%; /* Muted text on dark */
-    --accent: 220 30% 12%; /* Dark blue-grey #141721 */
+    --accent: 220 35% 10%; /* Sync with secondary, for hovers etc. */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 220 30% 15%; /* Subtle blue border #1A1D2B */
-    --input: 220 35% 8%; /* Dark blue for input fields #0C0E17 */
+    --border: 220 35% 12%; /* Darker, more saturated blue border #111421 */
+    --input: 220 40% 6%; /* Sync with popover #060813 */
     --ring: 35 90% 55%; /* Orange for focus rings */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -63,13 +61,13 @@ body {
     --chart-5: 340 75% 55%;
 
     /* Sidebar variables updated for deep blue theme */
-    --sidebar-background: 220 35% 9%;      /* Very dark blue, e.g., #0D0F1A */
+    --sidebar-background: 220 38% 7%;      /* Darker, more saturated blue #080A17 */
     --sidebar-foreground: 0 0% 98%;       /* Light text */
     --sidebar-primary: 35 90% 55%;        /* Orange accent */
     --sidebar-primary-foreground: 0 0% 98%;/* White text on orange */
-    --sidebar-accent: 220 30% 14%;       /* Dark blue for accents, e.g., #171A26 */
+    --sidebar-accent: 220 35% 11%;       /* Darker, more saturated blue for accents #10121F */
     --sidebar-accent-foreground: 0 0% 98%;/* Light text */
-    --sidebar-border: 220 30% 18%;       /* Slightly lighter blue for borders, e.g., #212533 */
+    --sidebar-border: 220 35% 14%;       /* Darker, more saturated blue for borders #151826 */
     --sidebar-ring: 35 90% 55%;          /* Orange for focus rings */
   }
 }
