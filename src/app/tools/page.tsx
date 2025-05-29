@@ -5,17 +5,6 @@ import { Code, Github, LockKeyhole, ToyBrick } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 
-interface Tool {
-  id: string;
-  name: string;
-  description: string;
-  type: 'Open-Source' | 'Closed-Source';
-  category: string;
-  icon: React.ElementType;
-  url?: string;
-  detailsUrl?: string; // For a dedicated page if needed
-}
-
 // Simple Fingerprint Icon as a placeholder
 const FingerprintIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" {...props}>
@@ -29,6 +18,18 @@ const FingerprintIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="M5 13a1 1 0 0 0-1 1v2.56A5.42 5.42 0 0 1 6.39 18.09"/>
   </svg>
 );
+
+
+interface Tool {
+  id: string;
+  name: string;
+  description: string;
+  type: 'Open-Source' | 'Closed-Source';
+  category: string;
+  icon: React.ElementType;
+  url?: string;
+  detailsUrl?: string; // For a dedicated page if needed
+}
 
 const tools: Tool[] = [
   {
@@ -113,7 +114,7 @@ export default function ToolsPage() {
         </div>
       </div>
       
-      <div>
+      <div id="open-source">
         <h2 className="text-2xl font-semibold mb-2">Open-Source Contributions</h2>
         <p className="text-muted-foreground mb-6">Tools we've developed and shared with the cybersecurity community.</p>
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -144,3 +145,4 @@ export default function ToolsPage() {
   );
 }
 
+    

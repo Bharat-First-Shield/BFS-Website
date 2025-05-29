@@ -26,15 +26,17 @@ export default function BlogPage() {
           {posts.map((post) => (
             <Card key={post.slug} className="flex flex-col overflow-hidden shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
               {post.imageUrl && (
-                <div className="relative w-full h-48">
+                <Link href={`/blog/${post.slug}`} className="block relative w-full h-48 group">
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
                     layout="fill"
                     objectFit="cover"
-                    data-ai-hint={`${post.category} ${post.tags[0]}`}
+                    className="group-hover:scale-105 transition-transform duration-300"
+                    data-ai-hint={`${post.category} ${post.tags[0] || 'technology'}`}
                   />
-                </div>
+                  <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
+                </Link>
               )}
               <CardHeader>
                 <div className="mb-2">
@@ -57,10 +59,10 @@ export default function BlogPage() {
                 </div>
               </CardHeader>
               <CardContent className="flex-grow">
-                <CardDescription>{post.excerpt}</CardDescription>
+                <CardDescription className="text-sm line-clamp-3">{post.excerpt}</CardDescription>
               </CardContent>
               <CardFooter>
-                <Button asChild variant="link" className="px-0 text-primary">
+                <Button asChild variant="link" className="px-0 text-primary text-sm">
                   <Link href={`/blog/${post.slug}`}>
                     Read More <ArrowRight className="ml-1 h-4 w-4" />
                   </Link>
@@ -78,3 +80,5 @@ export const metadata = {
   title: 'Blog - Bharat First Shield',
   description: 'Latest articles and insights on cybersecurity from Bharat-First-Shield.',
 };
+
+    
