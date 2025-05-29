@@ -33,7 +33,7 @@ const ThreeScene: React.FC = () => {
     // Lighting
     const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
     scene.add(ambientLight);
-    const pointLight = new THREE.PointLight(0x45B39D, 1, 100); // Teal accent
+    const pointLight = new THREE.PointLight(0xf2991c, 1, 100); // Vibrant orange accent
     pointLight.position.set(5, 5, 5);
     scene.add(pointLight);
 
@@ -51,7 +51,7 @@ const ThreeScene: React.FC = () => {
     // Wireframe for effect
     const wireframeGeometry = new THREE.WireframeGeometry(geometry);
     const wireframeMaterial = new THREE.LineBasicMaterial({ 
-      color: 0x45B39D, // Teal accent
+      color: 0xf2991c, // Vibrant orange accent
       linewidth: 1,
     });
     const wireframe = new THREE.LineSegments(wireframeGeometry, wireframeMaterial);
