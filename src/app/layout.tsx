@@ -21,7 +21,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Shield Master - Bharat-First-Shield',
+  title: 'Bharat First Shield',
   description: 'Comprehensive Cybersecurity Solutions: VAPT, SOC, and Digital Forensics by Bharat-First-Shield.',
 };
 

@@ -50,7 +50,7 @@ export default function Header() {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <Link href="/" className="flex items-center space-x-2 text-lg font-semibold">
           <ShieldCheck className="h-7 w-7 text-primary" />
-          <span>Shield Master</span>
+          <span>Bharat First Shield</span>
         </Link>
         
         <div className="hidden md:flex items-center space-x-4">
@@ -69,7 +69,7 @@ export default function Header() {
               <div className="flex justify-between items-center mb-6">
                 <Link href="/" className="flex items-center space-x-2 text-lg font-semibold">
                   <ShieldCheck className="h-7 w-7 text-primary" />
-                  <span>Shield Master</span>
+                  <span>Bharat First Shield</span>
                 </Link>
                 <SheetClose asChild>
                    <Button variant="ghost" size="icon">

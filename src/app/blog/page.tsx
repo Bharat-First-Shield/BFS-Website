@@ -13,7 +13,7 @@ export default function BlogPage() {
   return (
     <div className="space-y-10">
       <section className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Shield Master Blog</h1>
+        <h1 className="text-4xl font-bold mb-4">Bharat First Shield Blog</h1>
         <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
           Stay updated with the latest news, insights, and articles on cybersecurity from the experts at Bharat-First-Shield.
         </p>
@@ -75,6 +75,6 @@ export default function BlogPage() {
 }
 
 export const metadata = {
-  title: 'Blog - Shield Master',
+  title: 'Blog - Bharat First Shield',
   description: 'Latest articles and insights on cybersecurity from Bharat-First-Shield.',
 };

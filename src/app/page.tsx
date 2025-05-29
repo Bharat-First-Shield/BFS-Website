@@ -14,7 +14,7 @@ export default function Home() {
     <div className="space-y-20"> {/* Increased spacing for new sections */}
       <section className="text-center py-12">
         <h1 className="text-5xl font-bold mb-6">
-          Welcome to <span className="text-primary">Shield Master</span>
+          Welcome to <span className="text-primary">Bharat First Shield</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
           Your trusted partner in cybersecurity. Bharat-First-Shield provides cutting-edge VAPT, SOC, and Digital Forensics services to protect your digital assets.
