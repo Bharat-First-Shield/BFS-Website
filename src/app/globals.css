@@ -37,7 +37,7 @@ body {
   }
 
   .dark {
-    --background: 0 0% 7%; /* Very dark grey #121212 */
+    --background: 220 40% 5%; /* Deep space blue #05070d */
     --foreground: 0 0% 98%; /* Light text */
     --card: 0 0% 20%; /* Dark, authoritative grey #333333 */
     --card-foreground: 0 0% 98%;
