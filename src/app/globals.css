@@ -37,24 +37,24 @@ body {
   }
 
   .dark {
-    --background: 220 40% 5%; /* Deep space blue #05070d */
+    --background: 220 40% 5%; /* Deep space blue #05070D */
     --foreground: 0 0% 98%; /* Light text */
-    --card: 0 0% 20%; /* Dark, authoritative grey #333333 */
+    --card: 220 35% 10%; /* Very dark blue #0F111C */
     --card-foreground: 0 0% 98%;
-    --popover: 0 0% 15%; /* Slightly lighter for popovers */
+    --popover: 220 35% 8%; /* Even darker blue for popovers #0C0E17 */
     --popover-foreground: 0 0% 98%;
     --primary: 35 90% 55%; /* Vibrant orange #f2991c */
     --primary-foreground: 0 0% 98%; /* White text on orange for better contrast */
-    --secondary: 0 0% 25%; /* Lighter grey */
+    --secondary: 220 30% 12%; /* Dark blue-grey #141721 */
     --secondary-foreground: 0 0% 98%;
-    --muted: 0 0% 25%;
+    --muted: 220 30% 12%; /* Dark blue-grey #141721 */
     --muted-foreground: 0 0% 63.9%; /* Muted text on dark */
-    --accent: 0 0% 25%;
+    --accent: 220 30% 12%; /* Dark blue-grey #141721 */
     --accent-foreground: 0 0% 98%;
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
-    --border: 0 0% 30%; /* Slightly lighter border for dark theme */
-    --input: 0 0% 15%; /* Darker input fields */
+    --border: 220 30% 15%; /* Subtle blue border #1A1D2B */
+    --input: 220 35% 8%; /* Dark blue for input fields #0C0E17 */
     --ring: 35 90% 55%; /* Orange for focus rings */
     --chart-1: 220 70% 50%;
     --chart-2: 160 60% 45%;
@@ -62,17 +62,15 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
 
-    /* Sidebar variables, though not explicitly used with a complex sidebar component,
-       they are part of the theme structure and might be picked up by some components.
-       Adjusting them to match the dark theme. */
-    --sidebar-background: 0 0% 10%;
-    --sidebar-foreground: 0 0% 95.9%;
-    --sidebar-primary: 35 90% 55%;
-    --sidebar-primary-foreground: 0 0% 98%;
-    --sidebar-accent: 0 0% 15.9%;
-    --sidebar-accent-foreground: 0 0% 95.9%;
-    --sidebar-border: 0 0% 15.9%;
-    --sidebar-ring: 35 90% 55%;
+    /* Sidebar variables updated for deep blue theme */
+    --sidebar-background: 220 35% 9%;      /* Very dark blue, e.g., #0D0F1A */
+    --sidebar-foreground: 0 0% 98%;       /* Light text */
+    --sidebar-primary: 35 90% 55%;        /* Orange accent */
+    --sidebar-primary-foreground: 0 0% 98%;/* White text on orange */
+    --sidebar-accent: 220 30% 14%;       /* Dark blue for accents, e.g., #171A26 */
+    --sidebar-accent-foreground: 0 0% 98%;/* Light text */
+    --sidebar-border: 220 30% 18%;       /* Slightly lighter blue for borders, e.g., #212533 */
+    --sidebar-ring: 35 90% 55%;          /* Orange for focus rings */
   }
 }
 
