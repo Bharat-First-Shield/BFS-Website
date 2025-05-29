@@ -1,8 +1,7 @@
 
-import ThreeScene from '@/components/three-scene';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
-import { ArrowRight, Users, Wrench } from 'lucide-react'; // Removed FileText
+import { ArrowRight, Users, Wrench } from 'lucide-react'; 
 import Link from 'next/link';
 
 export default function Home() {
@@ -25,11 +24,9 @@ export default function Home() {
         </div>
       </section>
 
-      <section>
-        <ThreeScene />
-      </section>
+      {/* ThreeScene section removed */}
 
-      <section className="grid md:grid-cols-2 gap-8"> {/* Changed grid to md:grid-cols-2 */}
+      <section className="grid md:grid-cols-2 gap-8"> 
         <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
           <CardHeader>
             <Users className="h-10 w-10 text-primary mb-4" />
@@ -60,7 +57,6 @@ export default function Home() {
             </Button>
           </CardContent>
         </Card>
-        {/* SOW Generator Card Removed */}
       </section>
     </div>
   );
