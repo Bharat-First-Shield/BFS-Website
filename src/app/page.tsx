@@ -147,9 +147,16 @@ export default function Home() {
                       {post.title}
                     </Link>
                   </CardTitle>
-                   <p className="text-xs text-muted-foreground pt-1">
-                    By {post.author} on {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric' })}
-                  </p>
+                   <div className="flex items-center space-x-4 text-xs text-muted-foreground pt-1">
+                    <div className="flex items-center">
+                      <Users className="h-4 w-4 mr-1" /> {/* Using Users icon for author */}
+                      <span>{post.author}</span>
+                    </div>
+                    <div className="flex items-center">
+                      <BookOpen className="h-4 w-4 mr-1" /> {/* Using BookOpen for date or can use CalendarDays */}
+                      <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+                    </div>
+                  </div>
                 </CardHeader>
                 <CardContent className="flex-grow">
                   <CardDescription className="text-sm line-clamp-3">{post.excerpt}</CardDescription>
@@ -224,5 +231,4 @@ export default function Home() {
     </div>
   );
 }
-
     

@@ -12,7 +12,7 @@ const FingerprintIcon = (props: React.SVGProps<SVGSVGElement>) => (
     <path d="M12 10V8"/>
     <path d="M12 6a2 2 0 0 1-2-2c0-1.02.51-1.92.6-2.5C10.73 1.36 11 1.14 11 .83V0"/>
     <path d="M7.5 17.5A1.5 1.5 0 0 1 9 16V8a1 1 0 0 1 1-1h"/>
-    <path d="M15 16V7a1 1 0 0 0-1-1h- posibilidades-m"/>
+    <path d="M15 16V7a1 1 0 0 0-1-1h-1"/> {/* Corrected path, removed "posibilidades-m" which seems like an error */}
     <path d="M12 22a2 2 0 0 0 2-2 .5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5 2 2 0 0 0 2 2Z"/>
     <path d="M17.61 18.09A5.42 5.42 0 0 1 19 15.56V13a1 1 0 0 0-1-1h-1"/>
     <path d="M5 13a1 1 0 0 0-1 1v2.56A5.42 5.42 0 0 1 6.39 18.09"/>
@@ -103,11 +103,13 @@ export default function ToolsPage() {
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
                 <p className="text-muted-foreground mb-4 flex-grow">{tool.description}</p>
-                {tool.url && (
+                {tool.url === '#' ? (
+                   <Button variant="outline" className="mt-auto" disabled>Learn More (Coming Soon)</Button>
+                ) : tool.url ? (
                   <Button asChild variant="outline" className="mt-auto">
                     <Link href={tool.url} target="_blank" rel="noopener noreferrer">Learn More</Link>
                   </Button>
-                )}
+                ) : null}
               </CardContent>
             </Card>
           ))}
@@ -129,13 +131,13 @@ export default function ToolsPage() {
               </CardHeader>
               <CardContent className="flex-grow flex flex-col">
                 <p className="text-muted-foreground mb-4 flex-grow">{tool.description}</p>
-                {tool.url && (
+                {tool.url ? (
                   <Button asChild className="mt-auto">
                     <Link href={tool.url} target="_blank" rel="noopener noreferrer" className="flex items-center">
                       <Github className="mr-2 h-4 w-4" /> View on GitHub
                     </Link>
                   </Button>
-                )}
+                ) : null}
               </CardContent>
             </Card>
           ))}
@@ -144,5 +146,4 @@ export default function ToolsPage() {
     </div>
   );
 }
-
     
