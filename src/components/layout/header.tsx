@@ -1,7 +1,7 @@
 
 "use client";
 import Link from 'next/link';
-import { ShieldCheck, Menu, X } from 'lucide-react';
+import { ShieldCheck, Menu, X, DraftingCompass } from 'lucide-react'; // Added DraftingCompass for Blog Builder
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
@@ -13,6 +13,7 @@ const navItems = [
   { href: '/about', label: 'About Us' },
   { href: '/tools', label: 'Tools Showcase' },
   { href: '/blog', label: 'Blog' },
+  { href: '/blog-builder', label: 'Blog Builder', icon: DraftingCompass }, // Added Blog Builder Link
   { href: '/contact', label: 'Contact Us' },
 ];
 
@@ -33,12 +34,13 @@ export default function Header() {
           key={item.href}
           href={item.href}
           className={cn(
-            "text-sm font-medium transition-colors hover:text-primary",
+            "text-sm font-medium transition-colors hover:text-primary flex items-center",
             pathname === item.href ? "text-primary" : "text-foreground/80",
             mobile ? "text-lg" : ""
           )}
           onClick={() => mobile && setIsMobileMenuOpen(false)}
         >
+          {item.icon && <item.icon className={cn("mr-2 h-4 w-4", mobile ? "h-5 w-5" : "")} />}
           {item.label}
         </Link>
       ))}

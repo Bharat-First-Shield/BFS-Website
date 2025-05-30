@@ -4,7 +4,7 @@
 import { notFound } from 'next/navigation';
 import { useEffect } from 'react';
 
-export default function ProfilePage() {
+export default function TasksPage() {
   useEffect(() => {
     notFound();
   }, []);
