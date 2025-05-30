@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Users, Wrench, Target, ShieldAlert, Fingerprint as FingerprintIconLucide, Zap, MessageSquareText, Github, Mail, BookOpen } from 'lucide-react';
+import { ArrowRight, Users, Wrench, Target, ShieldAlert, Fingerprint as FingerprintIconLucide, Zap, MessageSquareText, Github, Mail, BookOpen, Code2 } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getRecentBlogPosts } from '@/lib/blog';
@@ -17,7 +17,7 @@ export default function Home() {
           Welcome to <span className="text-primary">Bharat First Shield</span>
         </h1>
         <p className="text-xl text-muted-foreground mb-8 max-w-2xl mx-auto">
-          Your trusted partner in cybersecurity. Bharat-First-Shield provides cutting-edge VAPT, SOC, and Digital Forensics services to protect your digital assets.
+          Your trusted partner in cybersecurity and web development. Bharat-First-Shield provides cutting-edge VAPT, SOC, Digital Forensics, and Full Stack Web Development services.
         </p>
         <div className="flex flex-wrap justify-center gap-4">
           <Button asChild size="lg">
@@ -30,8 +30,8 @@ export default function Home() {
       </section>
 
       <section>
-        <h2 className="text-3xl font-bold text-center mb-10">Our Premier Cybersecurity Services</h2>
-        <div className="grid md:grid-cols-3 gap-8">
+        <h2 className="text-3xl font-bold text-center mb-10">Our Premier Services</h2>
+        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
           <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 flex flex-col">
             <CardHeader>
               <Target className="h-10 w-10 text-primary mb-4" />
@@ -62,7 +62,7 @@ export default function Home() {
           </Card>
           <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 flex flex-col">
             <CardHeader>
-              <FingerprintIconLucide className="h-10 w-10 text-primary mb-4" /> {/* Renamed to avoid conflict if Fingerprint is a type */}
+              <FingerprintIconLucide className="h-10 w-10 text-primary mb-4" />
               <CardTitle>Digital Forensics & Incident Response (DFIR)</CardTitle>
             </CardHeader>
             <CardContent className="flex-grow">
@@ -71,6 +71,20 @@ export default function Home() {
             <CardFooter>
               <Button asChild variant="link" className="px-0 text-primary">
                 <Link href="/about#dfir">Learn About DFIR <ArrowRight className="ml-1 h-4 w-4" /></Link>
+              </Button>
+            </CardFooter>
+          </Card>
+          <Card className="shadow-lg hover:shadow-primary/20 transition-shadow duration-300 flex flex-col">
+            <CardHeader>
+              <Code2 className="h-10 w-10 text-primary mb-4" />
+              <CardTitle>Full Stack Web Development</CardTitle>
+            </CardHeader>
+            <CardContent className="flex-grow">
+              <p className="text-muted-foreground">Comprehensive web solutions, from front-end design to back-end development, API integration, and cloud deployment.</p>
+            </CardContent>
+            <CardFooter>
+              <Button asChild variant="link" className="px-0 text-primary">
+                <Link href="/about#fullstack">Explore Web Development <ArrowRight className="ml-1 h-4 w-4" /></Link>
               </Button>
             </CardFooter>
           </Card>
@@ -89,17 +103,17 @@ export default function Home() {
             <div className="flex flex-col items-center text-center">
               <Users className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">Expert Team</h3>
-              <p className="text-muted-foreground text-sm">Our certified professionals bring deep, cross-domain expertise in VAPT, SOC operations, and complex digital forensics.</p>
+              <p className="text-muted-foreground text-sm">Our certified professionals bring deep, cross-domain expertise in cybersecurity and web development.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <Target className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">Tailored Solutions</h3>
-              <p className="text-muted-foreground text-sm">We provide customized security strategies that align precisely with your specific business needs, industry, and risk profile.</p>
+              <p className="text-muted-foreground text-sm">We provide customized security and web strategies that align precisely with your specific business needs.</p>
             </div>
             <div className="flex flex-col items-center text-center">
               <MessageSquareText className="h-12 w-12 text-primary mb-4" />
               <h3 className="text-xl font-semibold mb-2">India-First Focus</h3>
-              <p className="text-muted-foreground text-sm">Dedicated to securing Indian enterprises with a nuanced understanding of the local regulatory and threat landscape.</p>
+              <p className="text-muted-foreground text-sm">Dedicated to empowering Indian enterprises with a nuanced understanding of the local digital landscape.</p>
             </div>
           </div>
         </div>
@@ -201,7 +215,7 @@ export default function Home() {
       <section className="text-center py-16 border-t border-border/40 bg-card/30 rounded-lg shadow-inner">
         <h2 className="text-3xl font-bold mb-4">Ready to Secure Your Digital Future?</h2>
         <p className="text-lg text-muted-foreground mb-8 max-w-xl mx-auto">
-          Partner with Bharat-First-Shield today. Our experts are ready to help you build a resilient and proactive cybersecurity posture.
+          Partner with Bharat-First-Shield today. Our experts are ready to help you build a resilient cybersecurity posture and impactful digital presence.
         </p>
         <Button asChild size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground">
           <Link href="/contact">Request a Consultation <Mail className="ml-2 h-5 w-5" /></Link>

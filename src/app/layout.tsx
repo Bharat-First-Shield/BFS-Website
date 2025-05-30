@@ -22,7 +22,7 @@ const spaceMono = Space_Mono({
 
 export const metadata: Metadata = {
   title: 'Bharat First Shield',
-  description: 'Comprehensive Cybersecurity Solutions: VAPT, SOC, and Digital Forensics by Bharat-First-Shield.',
+  description: 'Premier Cybersecurity and Full Stack Web Development Services: VAPT, SOC, DFIR, and Custom Web Solutions by Bharat-First-Shield.',
 };
 
 export default function RootLayout({
