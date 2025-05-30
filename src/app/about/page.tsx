@@ -1,7 +1,7 @@
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Separator } from '@/components/ui/separator';
-import { CheckCircle, Fingerprint, ShieldAlert, Target } from 'lucide-react';
+import { CheckCircle, Fingerprint, ShieldAlert, Target, Code2 } from 'lucide-react';
 import Image from 'next/image';
 
 const services = [
@@ -25,6 +25,13 @@ const services = [
     title: "Digital Forensics and Incident Response (DFIR)",
     description: "In the event of a security breach, our DFIR team provides rapid response to contain the threat, investigate the incident, and recover affected systems. We help you understand the attack and strengthen your defenses.",
     features: ["Incident Triage & Containment", "Forensic Data Acquisition", "Malware Analysis", "Post-Incident Reporting & Remediation"]
+  },
+  {
+    id: "fullstack",
+    icon: Code2,
+    title: "Full Stack Web Development",
+    description: "We design, develop, and deploy comprehensive web solutions, from dynamic front-end interfaces to robust back-end systems and APIs, tailored to your business needs.",
+    features: ["Custom Web Application Development", "Responsive UI/UX Design", "API Development & Integration", "Database Design & Management", "Cloud Deployment & DevOps"]
   }
 ];
 
@@ -34,20 +41,20 @@ export default function AboutPage() {
       <section className="text-center">
         <h1 className="text-4xl font-bold mb-4">About Bharat-First-Shield</h1>
         <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-          Bharat-First-Shield is a premier cybersecurity firm dedicated to safeguarding Indian organizations and beyond. We specialize in providing robust, proactive, and responsive security solutions tailored to meet the unique challenges of the digital age.
+          Bharat-First-Shield is a premier cybersecurity and technology firm dedicated to safeguarding Indian organizations and beyond. We specialize in providing robust, proactive, and responsive security solutions, alongside comprehensive web development services, tailored to meet the unique challenges of the digital age.
         </p>
       </section>
 
       <div className="relative w-full h-64 md:h-96 rounded-lg overflow-hidden shadow-xl">
         <Image 
           src="https://placehold.co/1200x400.png" 
-          alt="Cybersecurity professionals at work" 
+          alt="Cybersecurity and Web Development professionals at work" 
           layout="fill" 
           objectFit="cover"
           data-ai-hint="cybersecurity team" 
         />
         <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white text-center">Innovate. Secure. Protect.</h2>
+          <h2 className="text-3xl md:text-4xl font-bold text-white text-center">Innovate. Secure. Develop. Protect.</h2>
         </div>
       </div>
 
@@ -55,7 +62,7 @@ export default function AboutPage() {
 
       <section id="core-services">
         <h2 className="text-3xl font-semibold text-center mb-8">Our Core Services</h2>
-        <div className="grid md:grid-cols-1 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-8"> {/* Adjusted grid for 4 items */}
           {services.map((service) => (
             <Card key={service.title} id={service.id} className="flex flex-col shadow-lg hover:shadow-primary/20 transition-shadow duration-300">
               <CardHeader>
@@ -85,15 +92,13 @@ export default function AboutPage() {
       <section className="text-center">
         <h2 className="text-3xl font-semibold mb-4">Our Mission</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto mb-4">
-          To empower organizations with resilient cybersecurity postures through innovative solutions, expert guidance, and unwavering commitment to digital safety.
+          To empower organizations with resilient cybersecurity postures and impactful digital presences through innovative solutions, expert guidance, and unwavering commitment to digital safety and excellence.
         </p>
         <h2 className="text-3xl font-semibold mb-4">Our Vision</h2>
         <p className="text-muted-foreground max-w-2xl mx-auto">
-          To be the leading cybersecurity partner, recognized for excellence, integrity, and a proactive approach to defending against the ever-evolving threat landscape.
+          To be the leading technology partner, recognized for excellence in cybersecurity and web development, integrity, and a proactive approach to defending against the ever-evolving threat landscape while building the digital future.
         </p>
       </section>
     </div>
   );
 }
-
-    
