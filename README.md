@@ -10,7 +10,6 @@ This is a Next.js application built with Firebase Studio, showcasing a professio
 - **Styling**: Tailwind CSS
 - **UI Components**: ShadCN UI
 - **Content**: MDX for blog posts ✍️
-- **AI (Optional)**: Genkit (for potential AI-driven features, pre-configured) 🤖
 - **Deployment**: Firebase App Hosting (configured via `apphosting.yaml`) 🚀
 
 ## Getting Started 🏁
@@ -27,16 +26,6 @@ To get this project up and running locally:
     npm run dev
     ```
     This will start the Next.js development server, typically on `http://localhost:9002`.
-
-4.  **Genkit Development (Optional):**
-    If you plan to work with Genkit AI flows, you can run the Genkit development server in a separate terminal:
-    ```bash
-    npm run genkit:dev
-    ```
-    Or with watch mode:
-    ```bash
-    npm run genkit:watch
-    ```
 
 ## Key Features 🌟
 
@@ -93,8 +82,6 @@ In the project directory, you can run:
 -   `npm run start`: Starts the production server (after building).
 -   `npm run lint`: Lints the project files.
 -   `npm run typecheck`: Runs TypeScript to check for type errors.
--   `npm run genkit:dev`: Starts the Genkit development server.
--   `npm run genkit:watch`: Starts the Genkit development server in watch mode.
 
 ## Deployment ☁️
 
