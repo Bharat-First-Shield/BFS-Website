@@ -29,7 +29,7 @@ const blogBuilderSchema = z.object({
   tags: z.string().min(2, { message: "Enter at least one tag." }), // Comma-separated
   imageUrl: z.string().url({ message: "Please enter a valid URL for image." }).optional().or(z.literal('')),
   excerpt: z.string().min(10, { message: "Excerpt must be at least 10 characters." }).max(300, { message: "Excerpt must be 300 characters or less." }),
-  content: z.string().min(50, { message: "Content (HTML) must be at least 50 characters." }),
+  content: z.string().min(50, { message: "Content (Markdown/HTML) must be at least 50 characters." }),
 });
 
 type BlogBuilderValues = z.infer<typeof blogBuilderSchema>;
@@ -45,7 +45,8 @@ function generateSlug(title: string): string {
 
 export default function BlogBuilderPage() {
   const { toast } = useToast();
-  const [generatedCode, setGeneratedCode] = useState<string | null>(null);
+  const [generatedMdx, setGeneratedMdx] = useState<string | null>(null);
+  const [generatedSlug, setGeneratedSlug] = useState<string | null>(null);
 
   const form = useForm<BlogBuilderValues>({
     resolver: zodResolver(blogBuilderSchema),
@@ -57,39 +58,37 @@ export default function BlogBuilderPage() {
       tags: "",
       imageUrl: "",
       excerpt: "",
-      content: "<p>Start writing your blog content here using HTML...</p>",
+      content: "## Start Writing Your Blog Content Here\n\nUse Markdown or embed HTML/JSX if needed...",
     },
   });
 
   function onSubmit(values: BlogBuilderValues) {
     const slug = generateSlug(values.title);
-    const tagsArray = values.tags.split(",").map(tag => tag.trim()).filter(tag => tag);
+    setGeneratedSlug(slug);
+    const tagsArrayString = values.tags.split(",").map(tag => `"${tag.trim()}"`).join(', ');
 
-    const code = `
-{
-  slug: '${slug.replace(/'/g, "\\'")}',
-  title: '${values.title.replace(/'/g, "\\'")}',
-  date: '${values.date.replace(/'/g, "\\'")}',
-  author: '${values.author.replace(/'/g, "\\'")}',
-  excerpt: \`${values.excerpt.replace(/`/g, "\\`")}\`,
-  content: \`
-    ${values.content.replace(/`/g, "\\`")}
-  \`,
-  ${values.imageUrl ? `imageUrl: '${values.imageUrl.replace(/'/g, "\\'")}',` : ''}
-  tags: [${tagsArray.map(tag => `'${tag.replace(/'/g, "\\'")}'`).join(', ')}],
-  category: '${values.category.replace(/'/g, "\\'")}'
-},
+    const mdxContent = `---
+title: "${values.title.replace(/"/g, '\\"')}"
+date: "${values.date}"
+author: "${values.author.replace(/"/g, '\\"')}"
+excerpt: "${values.excerpt.replace(/"/g, '\\"')}"
+${values.imageUrl ? `imageUrl: "${values.imageUrl.replace(/"/g, '\\"')}"` : ''}
+tags: [${tagsArrayString}]
+category: "${values.category.replace(/"/g, '\\"')}"
+---
+
+${values.content}
 `;
-    setGeneratedCode(code);
+    setGeneratedMdx(mdxContent);
     toast({
-      title: "Code Generated!",
-      description: "Copy the code below and add it to src/lib/blog.ts inside the blogPosts array.",
+      title: "MDX Code Generated!",
+      description: `Copy the code below and save it as '${slug}.mdx' in the 'src/app/blog/blogs/' folder.`,
     });
   }
 
   const handleCopyToClipboard = () => {
-    if (generatedCode) {
-      navigator.clipboard.writeText(generatedCode).then(() => {
+    if (generatedMdx) {
+      navigator.clipboard.writeText(generatedMdx).then(() => {
         toast({ title: "Copied to clipboard!" });
       }).catch(err => {
         toast({ variant: "destructive", title: "Failed to copy", description: "Could not copy code to clipboard." });
@@ -102,10 +101,10 @@ export default function BlogBuilderPage() {
     <div className="space-y-8">
       <Card>
         <CardHeader>
-          <CardTitle>Blog Post Builder</CardTitle>
+          <CardTitle>Blog Post Builder (MDX)</CardTitle>
           <CardDescription>
-            Fill in the details for your new blog post. This tool will generate the TypeScript code
-            that you can then manually add to the `blogPosts` array in `src/lib/blog.ts`.
+            Fill in the details for your new blog post. This tool will generate the MDX content.
+            You will then save this content as a new `.mdx` file in the `src/app/blog/blogs/` directory.
           </CardDescription>
         </CardHeader>
         <CardContent>
@@ -224,17 +223,17 @@ export default function BlogBuilderPage() {
                 name="content"
                 render={({ field }) => (
                   <FormItem>
-                    <FormLabel>Content (HTML)</FormLabel>
+                    <FormLabel>Content (Markdown/MDX)</FormLabel>
                     <FormControl>
                       <Textarea
-                        placeholder="Write the full blog post content here using HTML..."
-                        className="min-h-[250px] resize-y"
-                        rows={12}
+                        placeholder="Write the full blog post content here using Markdown..."
+                        className="min-h-[250px] resize-y font-mono"
+                        rows={15}
                         {...field}
                       />
                     </FormControl>
                     <FormDescription>
-                      Enter the main content of your blog post using HTML for formatting.
+                      Enter the main content of your blog post using Markdown. You can also include HTML or JSX if needed.
                     </FormDescription>
                     <FormMessage />
                   </FormItem>
@@ -243,21 +242,20 @@ export default function BlogBuilderPage() {
               
               <Button type="submit" className="w-full md:w-auto">
                 <Code className="mr-2 h-4 w-4" />
-                Generate Blog Post Code
+                Generate MDX Code
               </Button>
             </form>
           </Form>
         </CardContent>
       </Card>
 
-      {generatedCode && (
+      {generatedMdx && generatedSlug && (
         <Card>
           <CardHeader className="flex flex-row items-center justify-between">
             <div>
-              <CardTitle>Generated Code</CardTitle>
+              <CardTitle>Generated MDX Code</CardTitle>
               <CardDescription>
-                Copy this code and paste it into the `blogPosts` array in `src/lib/blog.ts`.
-                Make sure to add it inside the array `[]` and add a comma if it's not the last item.
+                Copy this code and save it as <strong className="text-primary">{generatedSlug}.mdx</strong> in the <code className="bg-muted p-1 rounded text-sm">src/app/blog/blogs/</code> directory.
               </CardDescription>
             </div>
             <Button variant="outline" size="icon" onClick={handleCopyToClipboard} title="Copy to Clipboard">
@@ -266,7 +264,7 @@ export default function BlogBuilderPage() {
           </CardHeader>
           <CardContent>
             <pre className="p-4 bg-muted rounded-md overflow-x-auto text-sm">
-              <code>{generatedCode}</code>
+              <code>{generatedMdx}</code>
             </pre>
           </CardContent>
         </Card>

@@ -2,13 +2,13 @@
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, Users, Wrench, Target, ShieldAlert, Fingerprint as FingerprintIconLucide, Zap, MessageSquareText, Github, Mail, BookOpen, Code2 } from 'lucide-react';
+import { ArrowRight, Users, Wrench, Target, ShieldAlert, Fingerprint as FingerprintIconLucide, Zap, MessageSquareText, Github, Mail, BookOpen, Code2, CalendarDays } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { getRecentBlogPosts } from '@/lib/blog';
+import { getRecentBlogPosts, BlogListItem } from '@/lib/blog';
 
-export default function Home() {
-  const recentPosts = getRecentBlogPosts(3);
+export default async function Home() {
+  const recentPosts: BlogListItem[] = await getRecentBlogPosts(3);
 
   return (
     <div className="space-y-20"> {/* Increased spacing for new sections */}
@@ -130,10 +130,10 @@ export default function Home() {
                     <Image
                       src={post.imageUrl}
                       alt={post.title}
-                      layout="fill"
-                      objectFit="cover"
+                      fill
+                      style={{objectFit: "cover"}}
                       className="group-hover:scale-105 transition-transform duration-300"
-                      data-ai-hint={`${post.category} ${post.tags[0] || 'technology'}`}
+                      data-ai-hint={`${post.category} ${post.tags && post.tags.length > 0 ? post.tags[0] : 'technology'}`}
                     />
                      <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                   </Link>
@@ -149,11 +149,11 @@ export default function Home() {
                   </CardTitle>
                    <div className="flex items-center space-x-4 text-xs text-muted-foreground pt-1">
                     <div className="flex items-center">
-                      <Users className="h-4 w-4 mr-1" /> {/* Using Users icon for author */}
+                      <Users className="h-4 w-4 mr-1" />
                       <span>{post.author}</span>
                     </div>
                     <div className="flex items-center">
-                      <BookOpen className="h-4 w-4 mr-1" /> {/* Using BookOpen for date or can use CalendarDays */}
+                      <CalendarDays className="h-4 w-4 mr-1" />
                       <span>{new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
                     </div>
                   </div>
@@ -231,4 +231,3 @@ export default function Home() {
     </div>
   );
 }
-    

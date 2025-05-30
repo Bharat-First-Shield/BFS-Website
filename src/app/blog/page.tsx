@@ -1,5 +1,5 @@
 
-import { getAllBlogPosts, BlogPost } from '@/lib/blog';
+import { getAllBlogPosts, BlogListItem } from '@/lib/blog';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
@@ -7,9 +7,15 @@ import { Badge } from '@/components/ui/badge';
 import { ArrowRight, CalendarDays, UserCircle, DraftingCompass, FilePlus2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Separator } from '@/components/ui/separator';
+import type { Metadata } from 'next';
 
-export default function BlogPage() {
-  const posts = getAllBlogPosts();
+export const metadata: Metadata = {
+  title: 'Blog - Bharat First Shield',
+  description: 'Latest articles and insights on cybersecurity from Bharat-First-Shield.',
+};
+
+export default async function BlogPage() {
+  const posts = await getAllBlogPosts();
 
   return (
     <div className="space-y-10">
@@ -21,7 +27,16 @@ export default function BlogPage() {
       </section>
 
       {posts.length === 0 ? (
-        <p className="text-center text-muted-foreground">No blog posts available yet. Check back soon!</p>
+        <div className="text-center py-10">
+          <DraftingCompass className="mx-auto h-12 w-12 text-muted-foreground mb-4" />
+          <h2 className="text-xl font-semibold mb-2">No Blog Posts Yet</h2>
+          <p className="text-muted-foreground mb-6">
+            It looks like we haven't published any articles yet. Check back soon!
+          </p>
+          <p className="text-sm text-muted-foreground">
+            You can also use the Blog Builder tool to generate code for new posts.
+          </p>
+        </div>
       ) : (
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {posts.map((post) => (
@@ -31,10 +46,10 @@ export default function BlogPage() {
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{objectFit: "cover"}}
                     className="group-hover:scale-105 transition-transform duration-300"
-                    data-ai-hint={`${post.category} ${post.tags[0] || 'technology'}`}
+                    data-ai-hint={`${post.category} ${post.tags && post.tags.length > 0 ? post.tags[0] : 'technology'}`}
                   />
                   <div className="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors duration-300"></div>
                 </Link>
@@ -79,7 +94,7 @@ export default function BlogPage() {
       <section className="text-center py-8">
         <h2 className="text-2xl font-semibold mb-4">Create a New Blog Post</h2>
         <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
-          Use our Blog Builder tool to easily generate the code for your next article.
+          Use our Blog Builder tool to easily generate the MDX code for your next article.
         </p>
         <Button asChild size="lg">
           <Link href="/blog-builder">
@@ -91,8 +106,3 @@ export default function BlogPage() {
     </div>
   );
 }
-
-export const metadata = {
-  title: 'Blog - Bharat First Shield',
-  description: 'Latest articles and insights on cybersecurity from Bharat-First-Shield.',
-};

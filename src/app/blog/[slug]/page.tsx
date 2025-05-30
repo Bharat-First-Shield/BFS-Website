@@ -1,5 +1,5 @@
 
-import { getBlogPostBySlug, getAllBlogPosts, BlogPost } from '@/lib/blog';
+import { getPostBySlug, getAllBlogPosts, BlogPostFrontMatter } from '@/lib/blog';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import { Badge } from '@/components/ui/badge';
@@ -8,13 +8,14 @@ import { Separator } from '@/components/ui/separator';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import type { Metadata } from 'next';
+import { MDXRemote } from 'next-mdx-remote/rsc';
 
 type Props = {
   params: { slug: string };
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const post = getBlogPostBySlug(params.slug);
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     return {
@@ -35,14 +36,14 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 
 export async function generateStaticParams() {
-  const posts = getAllBlogPosts();
+  const posts = await getAllBlogPosts();
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getBlogPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: { params: { slug: string } }) {
+  const post = await getPostBySlug(params.slug);
 
   if (!post) {
     notFound();
@@ -72,18 +73,19 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
           <Image
             src={post.imageUrl}
             alt={post.title}
-            layout="fill"
-            objectFit="cover"
+            fill
+            style={{objectFit: "cover"}}
             priority
-            data-ai-hint={`${post.category} ${post.tags[0]}`}
+            data-ai-hint={`${post.category} ${post.tags && post.tags.length > 0 ? post.tags[0] : 'technology'}`}
           />
         </div>
       )}
       
       <div 
-        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80 prose-ul:list-disc prose-ol:list-decimal"
-        dangerouslySetInnerHTML={{ __html: post.content }}
-      />
+        className="prose prose-lg dark:prose-invert max-w-none prose-headings:text-foreground prose-p:text-foreground/90 prose-strong:text-foreground prose-a:text-primary hover:prose-a:text-primary/80 prose-ul:list-disc prose-ol:list-decimal prose-img:rounded-md prose-img:shadow-md prose-code:before:content-none prose-code:after:content-none prose-code:bg-muted prose-code:text-foreground prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded"
+      >
+        <MDXRemote source={post.content} />
+      </div>
 
       <Separator className="my-8" />
 
