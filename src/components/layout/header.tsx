@@ -1,7 +1,7 @@
 
 "use client";
 import Link from 'next/link';
-import { ShieldCheck, Menu, X, DraftingCompass } from 'lucide-react'; // Added DraftingCompass for Blog Builder
+import { ShieldCheck, Menu, X } from 'lucide-react'; 
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger, SheetClose } from '@/components/ui/sheet';
 import { useState, useEffect } from 'react';
@@ -13,7 +13,6 @@ const navItems = [
   { href: '/about', label: 'About Us' },
   { href: '/tools', label: 'Tools Showcase' },
   { href: '/blog', label: 'Blog' },
-  { href: '/blog-builder', label: 'Blog Builder', icon: DraftingCompass }, // Added Blog Builder Link
   { href: '/contact', label: 'Contact Us' },
 ];
 

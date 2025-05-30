@@ -4,8 +4,9 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { ArrowRight, CalendarDays, UserCircle } from 'lucide-react';
+import { ArrowRight, CalendarDays, UserCircle, DraftingCompass, FilePlus2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { Separator } from '@/components/ui/separator';
 
 export default function BlogPage() {
   const posts = getAllBlogPosts();
@@ -72,6 +73,21 @@ export default function BlogPage() {
           ))}
         </div>
       )}
+
+      <Separator className="my-12" />
+
+      <section className="text-center py-8">
+        <h2 className="text-2xl font-semibold mb-4">Create a New Blog Post</h2>
+        <p className="text-muted-foreground mb-6 max-w-xl mx-auto">
+          Use our Blog Builder tool to easily generate the code for your next article.
+        </p>
+        <Button asChild size="lg">
+          <Link href="/blog-builder">
+            <FilePlus2 className="mr-2 h-5 w-5" />
+            Go to Blog Builder
+          </Link>
+        </Button>
+      </section>
     </div>
   );
 }
@@ -80,5 +96,3 @@ export const metadata = {
   title: 'Blog - Bharat First Shield',
   description: 'Latest articles and insights on cybersecurity from Bharat-First-Shield.',
 };
-
-    
